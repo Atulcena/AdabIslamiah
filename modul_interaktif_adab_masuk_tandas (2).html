@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul Interaktif: Adab Masuk Tandas</title>
+<style>
+:root{--blue:#168bd2;--pink:#f04491;--green:#22a66a;--yellow:#ffbf36;--purple:#8753d6;--ink:#20304a}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:linear-gradient(135deg,#dff7ff,#fff2f8 55%,#fff7d9)}
+.wrap{max-width:1100px;margin:auto;padding:18px}
+.hero{background:linear-gradient(110deg,#087dc1,#41c5e9);color:white;border:5px solid white;border-radius:26px;padding:24px;text-align:center;box-shadow:0 8px 18px #15334b20}
+.hero h1{font-size:clamp(1.8rem,5vw,3.4rem);margin:8px 0;text-shadow:2px 3px #075a8c}
+.hero p{margin:5px;font-weight:bold}
+.pill{display:inline-block;background:#fff2a8;color:#26364a;padding:8px 15px;border-radius:30px;font-weight:bold;margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.card{background:#fff;border:3px solid #fff;border-radius:22px;padding:18px;box-shadow:0 5px 14px #243d5515}
+.card h2{margin:-2px -2px 14px;padding:11px 14px;color:white;border-radius:15px;font-size:1.25rem}
+.pink h2{background:var(--pink)}.blue h2{background:var(--blue)}.green h2{background:var(--green)}.purple h2{background:var(--purple)}.yellow h2{background:var(--yellow);color:#253047}
+.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.step{border-radius:16px;padding:13px;background:#effaff;border:2px solid #b9eaff}
+.num{display:inline-flex;width:35px;height:35px;border-radius:50%;background:var(--blue);color:white;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem;margin-right:6px}
+.icon{font-size:2.1rem;display:block;margin:4px 0}
+.step strong{display:block;margin-bottom:5px}
+.dua{font-size:clamp(1.3rem,3vw,2rem);direction:rtl;text-align:center;line-height:2.1;color:#152b57;margin:8px 0}
+.meaning{background:#fff8d9;border-radius:13px;padding:12px;line-height:1.55}
+ul{padding-left:22px;line-height:1.7}
+.game{margin-top:16px}
+.question{background:#f7f2ff;border:2px solid #ddcaff;border-radius:15px;padding:13px;margin:10px 0}
+.options{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.option{border:0;border-radius:12px;padding:11px 14px;font-size:1rem;font-weight:bold;cursor:pointer;background:#e3f4ff;color:#183b59;transition:.15s}
+button:hover,.option:hover{transform:translateY(-1px);filter:brightness(.97)}
+button:focus,.option:focus{outline:3px solid #f6c344}
+.option{border:2px solid #b9e7ff;background:white;text-align:left;flex:1 1 220px}
+.option.correct{background:#d8ffe7;border-color:#22a66a}.option.wrong{background:#ffe0e7;border-color:#ef5074}
+.feedback{font-weight:bold;min-height:24px;margin-top:9px}
+.order-row{display:flex;gap:8px;align-items:center;margin:8px 0}
+.order-row select{padding:10px;border-radius:10px;border:2px solid #c8d9ec;background:white}
+.order-row span{flex:1;line-height:1.4}
+.action{background:var(--purple);color:white;margin-top:8px}
+.reset{background:#253b56;color:white;margin:10px 0}
+.footer{text-align:center;padding:20px;font-size:.9rem;color:#52647b}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.wrap{padding:10px}.card{padding:13px}.order-row{align-items:flex-start}.order-row span{padding-top:8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div style="font-size:2rem">🌟 🚻 🌟</div>
+  <h1>ADAB MASUK TANDAS</h1>
+  <p>MODUL PEMBELAJARAN & PERMAINAN INTERAKTIF</p>
+  <span class="pill">Pendidikan Islam • Unit 5.1 • SP 5.1.2</span>
+</header>
+
+<div class="grid">
+  <section class="card pink">
+    <h2>🎯 Objektif Pembelajaran</h2>
+    <p>Pada akhir pembelajaran, murid dapat:</p>
+    <ul>
+      <li>Membaca doa masuk tandas dengan betul.</li>
+      <li>Menyatakan empat adab masuk tandas.</li>
+      <li>Mengamalkan adab masuk tandas dalam kehidupan harian.</li>
+    </ul>
+  </section>
+
+  <section class="card green">
+    <h2>🤲 Doa Masuk Tandas</h2>
+    <div class="dua" lang="ar">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ</div>
+    <div class="meaning"><strong>Maksudnya:</strong><br>Ya Allah, sesungguhnya aku berlindung kepada-Mu daripada (gangguan) syaitan jantan dan syaitan betina.</div>
+    <button class="action" onclick="speakDua()">🔊 Dengar bacaan maksud (jika disokong)</button>
+  </section>
+</div>
+
+<section class="card blue" style="margin-top:16px">
+  <h2>✨ Empat Adab Masuk Tandas yang Betul</h2>
+  <div class="steps">
+    <div class="step"><span class="num">1</span><span class="icon">🤲</span><strong>Membaca doa masuk tandas</strong>Berdoa sebelum melangkah masuk.</div>
+    <div class="step"><span class="num">2</span><span class="icon">📖 🚫</span><strong>Mengelakkan membawa sesuatu yang mulia</strong>Contohnya, al-Quran atau bahan yang mengandungi ayat suci.</div>
+    <div class="step"><span class="num">3</span><span class="icon">👣 ⬅️</span><strong>Melangkah masuk dengan kaki kiri</strong>Dahulukan kaki kiri ketika masuk ke tandas.</div>
+    <div class="step"><span class="num">4</span><span class="icon">🧼 👕</span><strong>Mengelakkan badan dan pakaian daripada najis</strong>Berhati-hati dan pastikan badan serta pakaian sentiasa bersih.</div>
+  </div>
+</section>
+
+<section class="card yellow" style="margin-top:16px">
+  <h2>💡 Ingat!</h2>
+  <p>🌼 Jaga kebersihan tandas. &nbsp; 🌼 Gunakan tandas dengan cara yang betul.</p>
+  <p>🌼 Elakkan bermain di dalam tandas. &nbsp; 🌼 Keluar dengan kaki kanan dan baca doa keluar tandas.</p>
+</section>
+
+<section class="card pink game">
+  <h2>🎮 Permainan 1: Pilih Adab yang Betul</h2>
+  <p>Klik jawapan yang betul bagi setiap soalan.</p>
+  <div class="question">
+    <strong>1. Apakah yang perlu dilakukan sebelum masuk tandas?</strong>
+    <div class="options">
+      <button class="option" onclick="answer(this,false,'q1')">Terus masuk tanpa berdoa</button>
+      <button class="option" onclick="answer(this,true,'q1')">Membaca doa masuk tandas</button>
+      <button class="option" onclick="answer(this,false,'q1')">Bermain telefon</button>
+    </div><div class="feedback" id="q1"></div>
+  </div>
+  <div class="question">
+    <strong>2. Antara berikut, apakah yang perlu dielakkan daripada dibawa masuk?</strong>
+    <div class="options">
+      <button class="option" onclick="answer(this,true,'q2')">Al-Quran atau bahan yang mengandungi ayat suci</button>
+      <button class="option" onclick="answer(this,false,'q2')">Tuala biasa</button>
+      <button class="option" onclick="answer(this,false,'q2')">Selipar tandas</button>
+    </div><div class="feedback" id="q2"></div>
+  </div>
+  <div class="question">
+    <strong>3. Kaki manakah yang didahulukan ketika masuk tandas?</strong>
+    <div class="options">
+      <button class="option" onclick="answer(this,false,'q3')">Kaki kanan</button>
+      <button class="option" onclick="answer(this,true,'q3')">Kaki kiri</button>
+      <button class="option" onclick="answer(this,false,'q3')">Kedua-dua kaki serentak</button>
+    </div><div class="feedback" id="q3"></div>
+  </div>
+  <div class="question">
+    <strong>4. Bagaimanakah kita menjaga kebersihan ketika menggunakan tandas?</strong>
+    <div class="options">
+      <button class="option" onclick="answer(this,false,'q4')">Membiarkan pakaian terkena najis</button>
+      <button class="option" onclick="answer(this,true,'q4')">Mengelakkan badan dan pakaian daripada terkena najis</button>
+      <button class="option" onclick="answer(this,false,'q4')">Tidak perlu membersihkan diri</button>
+    </div><div class="feedback" id="q4"></div>
+  </div>
+  <p id="score" style="font-weight:bold">Skor: 0 / 4</p>
+  <button class="reset" onclick="resetQuiz()">↻ Cuba Semula</button>
+</section>
+
+<section class="card purple game">
+  <h2>🧩 Permainan 2: Susun Langkah</h2>
+  <p>Pilih nombor urutan bagi setiap adab. Susun mengikut urutan yang dipelajari dalam modul ini.</p>
+  <div class="order-row"><select id="o1"><option value="">Pilih</option><option>1</option><option>2</option><option>3</option><option>4</option></select><span>Membaca doa masuk tandas.</span></div>
+  <div class="order-row"><select id="o2"><option value="">Pilih</option><option>1</option><option>2</option><option>3</option><option>4</option></select><span>Mengelakkan membawa sesuatu yang mulia (al-Quran).</span></div>
+  <div class="order-row"><select id="o3"><option value="">Pilih</option><option>1</option><option>2</option><option>3</option><option>4</option></select><span>Melangkah masuk dengan kaki kiri.</span></div>
+  <div class="order-row"><select id="o4"><option value="">Pilih</option><option>1</option><option>2</option><option>3</option><option>4</option></select><span>Mengelakkan badan dan pakaian daripada najis.</span></div>
+  <button class="action" onclick="checkOrder()">Semak Jawapan</button>
+  <div class="feedback" id="orderFeedback" aria-live="polite"></div>
+</section>
+
+<section class="card blue game">
+  <h2>⭐ Kuiz Pantas: Lengkapkan Doa</h2>
+  <p>Doa masuk tandas bermula dengan perkataan:</p>
+  <div class="options">
+    <button class="option" onclick="answer(this,true,'duaQ')">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ</button>
+    <button class="option" onclick="answer(this,false,'duaQ')">الْحَمْدُ لِلَّهِ</button>
+    <button class="option" onclick="answer(this,false,'duaQ')">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</button>
+  </div>
+  <div class="feedback" id="duaQ"></div>
+</section>
+
+<footer class="footer">
+  <strong>Nama Guru:</strong> Ustazah Zaitul &nbsp; | &nbsp; <strong>Kelas:</strong> Progresif 4<br>
+  <strong>Nama Murid:</strong> __________________________ &nbsp; <strong>Tarikh:</strong> ______________
+</footer>
+</div>
+<script>
+let score=0; const done={};
+function answer(btn,correct,id){
+  const box=document.getElementById(id);
+  const parent=btn.closest('.question')||btn.parentElement;
+  parent.querySelectorAll('.option').forEach(b=>{b.disabled=true;if(b===btn)b.classList.add(correct?'correct':'wrong')});
+  if(correct){box.textContent='Betul! Syabas! 🌟';box.style.color='#13834c';if(!done[id]){score++;done[id]=true}}
+  else{box.textContent='Belum tepat. Cuba ingat semula adab yang dipelajari. 💪';box.style.color='#c52d55';done[id]=false}
+  document.getElementById('score').textContent='Skor: '+score+' / 4';
+}
+function resetQuiz(){
+  score=0;for(const k in done)delete done[k];
+  document.querySelectorAll('.option').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong')});
+  document.querySelectorAll('.feedback').forEach(e=>e.textContent='');
+  document.getElementById('score').textContent='Skor: 0 / 4';
+}
+function checkOrder(){
+  const vals=['o1','o2','o3','o4'].map(id=>document.getElementById(id).value);
+  const f=document.getElementById('orderFeedback');
+  if(vals.some(v=>!v)){f.textContent='Sila pilih nombor untuk semua langkah dahulu.';f.style.color='#c52d55';return}
+  if(new Set(vals).size!==4){f.textContent='Setiap langkah perlu mempunyai nombor yang berbeza. Cuba lagi!';f.style.color='#c52d55';return}
+  // Urutan paparan modul: doa, elak membawa benda mulia, kaki kiri, jaga daripada najis.
+  if(vals.join(',')==='1,2,3,4'){f.textContent='Hebat! Semua langkah disusun dengan betul! 🎉';f.style.color='#13834c'}
+  else{f.textContent='Belum tepat. Ikut urutan yang ditunjukkan dalam modul: 1, 2, 3, 4. Cuba lagi!';f.style.color='#c52d55'}
+}
+function speakDua(){
+ const text='Ya Allah, sesungguhnya aku berlindung kepada-Mu daripada gangguan syaitan jantan dan syaitan betina.';
+ if('speechSynthesis' in window){const u=new SpeechSynthesisUtterance(text);u.lang='ms-MY';speechSynthesis.speak(u)}
+ else{alert(text)}
+}
+</script>
+</body>
+</html>
